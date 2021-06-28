@@ -7,7 +7,7 @@ Neural Style Transfer is a simple application of Convolutional Neural Networks a
 ## Pre-trained Data
 For the model for generating the image, we shall take help from some Transfer Learning basics, by using a pre-trained ‘VGG-19 ImageNet’ network. We shall use this pre-trained model to update a randomly initialised image according to the constraints that we define and implement some custom loss functions to update the model parameters accordingly.
 
-[VGG-19](https://www.kaggle.com/keras/vgg19)
+[VGG-19](https://www.vlfeat.org/matconvnet/pretrained/)
 
 ## Data for Execution
 This task requires only 2 images -
@@ -45,14 +45,14 @@ For calculating the style cost, the following steps are taken -
 3)  The style cost is calculated using the Frobenius Norm of their element-wise difference matrix.
 
 Mathematically, the equation for the style cost looks like the following - 
-
+![Style Loss](images/styleloss.svg)
 Here, *n<sub>H</sub>, n<sub>W</sub>, n<sub>C</sub>* are the height, width, and number of channels in the chosen layer. *G<sup>(G)</sup><sub>gram</sub>* and *G<sup>(S)</sup><sub>gram</sub>* are the gram matrices of the activation at the chosen layer with inputs as the generated image G and the style image S.
 
 Note - For calculating the content cost, the activations from one layer are deemed enough. But for computing the style cost, taking the total cost from different layers will be better for the model’s performance.
 
 ### Total Cost
 The total cost can be simply calculated by a weighted sum of the content cost and the style cost - 
-(images/totalcost.png)
+![Total Loss](images/totalcost.png)
 where *&alpha;* and *&beta;* can be set manually and treated as hyper-parameters that control the relative weighting between the content and the style.
 
 
