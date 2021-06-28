@@ -34,13 +34,22 @@ Here, we will calculate the closeness of the content in the generated image with
 Here, *n<sub>H</sub>, n<sub>W</sub>, n<sub>C</sub>* are the height, width, and number of channels in the chosen layer. *a<sup>(G)</sup>* and *a<sup>(C)</sup>* are the activations at the chosen layer with inputs as the generated image G and the content image C.
 
 ### Style Cost
-Here, the cost computation is slightly more engaging. We take the help of gram matrices for the cost calculation. In linear algebra, the gram matrix *G<sub>gram</sub>* for a set of vectors *(v<sub>1</sub>,v<sub>2</sub>,...,v<sub>n</sub>)is the matrix of dot products, where *G<sub>gram</sub>(i,j)= v<sub>i</sub><sup>T</sup>v<sub>j</sub>*.
+Here, the cost computation is slightly more engaging. We take the help of gram matrices for the cost calculation. In linear algebra, the gram matrix *G<sub>gram</sub>* for a set of vectors *(v<sub>1</sub>,v<sub>2</sub>,...,v<sub>n</sub>)* is the matrix of dot products, where *G<sub>gram</sub>(i,j)= v<sub>i</sub><sup>T</sup>v<sub>j</sub>*.
 For calculating the style cost, the following steps are taken -
-1)  The activations of the chosen layer (each with the generated image G and the style image S as inputs) are reshaped into nC x (nH x nW) matrices.
+1)  The activations of the chosen layer (each with the generated image G and the style image S as inputs) are reshaped into *n<sub>C</sub> x (n<sub>H</sub> x n<sub>W</sub>)* matrices.
 2)  Then, the Gram matrices of the above-unrolled matrices are found out.
 3)  The style cost is calculated using the Frobenius Norm of their element-wise difference matrix.
 
 Mathematically, the equation for the style cost looks like the following - 
+
+Here, *n<sub>H</sub>, n<sub>W</sub>, n<sub>C</sub>* are the height, width, and number of channels in the chosen layer. *G<sup>(G)</sup><sub>gram</sub>* and *G<sup>(S)</sup><sub>gram</sub>* are the gram matrices of the activation at the chosen layer with inputs as the generated image G and the style image S.
+
+Note - For calculating the content cost, the activations from one layer are deemed enough. But for computing the style cost, taking the total cost from different layers will be better for the model’s performance.
+
+### Total Cost
+The total cost can be simply calculated by a weighted sum of the content cost and the style cost - 
+
+where *&alpha* and *&beta* can be set manually and treated as hyper-parameters that control the relative weighting between the content and the style.
 
 
 Team: Aditya Prakash, Aryan Mundada, Harsh Kumar and Imad Khan
