@@ -17,5 +17,22 @@ Apart from the images for the training and updating of our model parameters, we 
 ## Output
 Generated Image (G) - This is the image that we aim to produce. This image should incorporate maximum content from content image C and at the same time, have the style as similar as possible to style image S.
 
+## Model
+Following are the steps followed:
+1)  Load the images
+2)  Randomly initialize the image to be generated
+3)  Load the VGG-19 model
+4)  Calculate the required activations for the content image C, the style image S, and the generated image G, for the chosen layer(s).
+5)  Iteratively, calculate the content loss and the style loss by following the above equations. Use them to compute the total loss and update the generated image so as to minimize the loss.
+
+## Costs
+We will define two different cost functions, one each corresponding to the ‘Content Image’ and the ‘Style Image’ respectively
+
+### Content Cost
+Here, we will calculate the closeness of the content in the generated image with the ‘Content Image’. We will accomplish that by simply calculating the Euclidean distances between their matrix representations, i.e., by calculating the Frobenius Norm of their element-wise difference matrix. So, mathematically, our cost function will look like the following - 
+
+Here, n<sub>H</sub>, nW, nC are the height, width, and number of channels in the chosen layer. a(G)and a(C) are the activations at the chosen layer with inputs as the generated image G and the content image C.
+
+
 Team: Aditya Prakash, Aryan Mundada, Harsh Kumar and Imad Khan
 Offered by : Shivanshu Tyagi and Akshay Gupta
