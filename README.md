@@ -7,6 +7,8 @@ Neural Style Transfer is a simple application of Convolutional Neural Networks a
 ## Pre-trained Data
 For the model for generating the image, we shall take help from some Transfer Learning basics, by using a pre-trained ‘VGG-19 ImageNet’ network. We shall use this pre-trained model to update a randomly initialised image according to the constraints that we define and implement some custom loss functions to update the model parameters accordingly.
 
+https://www.kaggle.com/keras/vgg19
+
 ## Data for Execution
 This task requires only 2 images -
 1)  Content Image (C) - This image contains the primary content to which some particular style needs to be applied. It is usually the semantically more informative of the two images.
