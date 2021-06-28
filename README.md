@@ -18,6 +18,7 @@ Apart from the images for the training and updating of our model parameters, we 
 
 ## Output
 Generated Image (G) - This is the image that we aim to produce. This image should incorporate maximum content from content image C and at the same time, have the style as similar as possible to style image S.
+![Output Image](images/result.jpeg)
 
 ## Model
 Following are the steps followed:
