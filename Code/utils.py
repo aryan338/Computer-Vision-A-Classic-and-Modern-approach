@@ -82,12 +82,9 @@ def generate_noise_image(content_image, noise_ratio = NOISE_RATIO):
     return input_image
 
 
-def reshape_and_normalize_image(image):
-    image = np.reshape(image, ((1,) + image.shape))
-    image = image - MEANS
-    return image
-
 def loadimg(path):
     image = imageio.imread(path)
     assert image.shape == (IMAGE_HEIGHT, IMAGE_WIDTH, COLOR_CHANNELS)
+    image = np.reshape(image, (1, IMAGE_HEIGHT, IMAGE_WIDTH, COLOR_CHANNELS))
+    image = image - MEANS
     return image
