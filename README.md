@@ -49,7 +49,7 @@ Note - For calculating the content cost, the activations from one layer are deem
 ### Total Cost
 The total cost can be simply calculated by a weighted sum of the content cost and the style cost - 
 
-where *&alpha* and *&beta* can be set manually and treated as hyper-parameters that control the relative weighting between the content and the style.
+where *&alpha;* and *&beta;* can be set manually and treated as hyper-parameters that control the relative weighting between the content and the style.
 
 
 Team: Aditya Prakash, Aryan Mundada, Harsh Kumar and Imad Khan
