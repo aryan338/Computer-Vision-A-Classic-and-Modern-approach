@@ -31,7 +31,16 @@ We will define two different cost functions, one each corresponding to the ‘Co
 ### Content Cost
 Here, we will calculate the closeness of the content in the generated image with the ‘Content Image’. We will accomplish that by simply calculating the Euclidean distances between their matrix representations, i.e., by calculating the Frobenius Norm of their element-wise difference matrix. So, mathematically, our cost function will look like the following - 
 
-Here, n<sub>H</sub>, nW, nC are the height, width, and number of channels in the chosen layer. a(G)and a(C) are the activations at the chosen layer with inputs as the generated image G and the content image C.
+Here, *n<sub>H</sub>, n<sub>W</sub>, n<sub>C</sub>* are the height, width, and number of channels in the chosen layer. *a<sup>(G)</sup>* and *a<sup>(C)</sup>* are the activations at the chosen layer with inputs as the generated image G and the content image C.
+
+### Style Cost
+Here, the cost computation is slightly more engaging. We take the help of gram matrices for the cost calculation. In linear algebra, the gram matrix *G<sub>gram</sub>* for a set of vectors *(v<sub>1</sub>,v<sub>2</sub>,...,v<sub>n</sub>)is the matrix of dot products, where *G<sub>gram</sub>(i,j)= v<sub>i</sub><sup>T</sup>v<sub>j</sub>*.
+For calculating the style cost, the following steps are taken -
+1)  The activations of the chosen layer (each with the generated image G and the style image S as inputs) are reshaped into nC x (nH x nW) matrices.
+2)  Then, the Gram matrices of the above-unrolled matrices are found out.
+3)  The style cost is calculated using the Frobenius Norm of their element-wise difference matrix.
+
+Mathematically, the equation for the style cost looks like the following - 
 
 
 Team: Aditya Prakash, Aryan Mundada, Harsh Kumar and Imad Khan
