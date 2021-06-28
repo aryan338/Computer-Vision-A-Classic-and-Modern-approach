@@ -26,7 +26,8 @@ Following are the steps followed:
 3)  Load the VGG-19 model
 4)  Calculate the required activations for the content image C, the style image S, and the generated image G, for the chosen layer(s).
 5)  Iteratively, calculate the content loss and the style loss by following the above equations. Use them to compute the total loss and update the generated image so as to minimize the loss.
-(images/model.png)
+
+![Model](images/model.png)
 ## Costs
 We will define two different cost functions, one each corresponding to the ‘Content Image’ and the ‘Style Image’ respectively
 
@@ -45,14 +46,18 @@ For calculating the style cost, the following steps are taken -
 3)  The style cost is calculated using the Frobenius Norm of their element-wise difference matrix.
 
 Mathematically, the equation for the style cost looks like the following - 
+
 ![Style Loss](images/styleloss.svg)
+
 Here, *n<sub>H</sub>, n<sub>W</sub>, n<sub>C</sub>* are the height, width, and number of channels in the chosen layer. *G<sup>(G)</sup><sub>gram</sub>* and *G<sup>(S)</sup><sub>gram</sub>* are the gram matrices of the activation at the chosen layer with inputs as the generated image G and the style image S.
 
 Note - For calculating the content cost, the activations from one layer are deemed enough. But for computing the style cost, taking the total cost from different layers will be better for the model’s performance.
 
 ### Total Cost
 The total cost can be simply calculated by a weighted sum of the content cost and the style cost - 
+
 ![Total Loss](images/totalcost.png)
+
 where *&alpha;* and *&beta;* can be set manually and treated as hyper-parameters that control the relative weighting between the content and the style.
 
 
